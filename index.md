@@ -47,6 +47,7 @@ For your second milestone, explain what you've worked on since your previous mil
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/y3VAmNlER5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+
 My first milestone was finishing the hardware portion of my base project. This was relatively simple, as the floor cleaning robot is essentially a standard 3-in-1 starter kit robot. The chassis of this bot is made from an acrylic board, two TT wheels, and one universal wheel. Attached to it is an Arduino Uno R3 board acting as the "brain" of the bot, controlling the TT motors. The ultrasonic sensor emits sound pulses to measure the distance to an object in front of it, while the IR sensors sense any obstructions to the right and left of the robot. My only issue was that the wheels occasionally dragged when turning, but I chalked it up to the them getting caught on the acrylic board.
 
 # Schematics 
