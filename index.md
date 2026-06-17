@@ -35,12 +35,7 @@ For your final milestone, explain the outcome of your project. Key details to in
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/y3VAmNlER5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> 
 
-For your second milestone, explain what you've worked on since your previous milestone. You can highlight:
-- Technical details of what you've accomplished and how they contribute to the final goal
-- What has been surprising about the project so far
-- Previous challenges you faced that you overcame
-- What needs to be completed before your final milestone
-
+My second milestone was completing the coding portion of my project. The robot drives forward autonomously until it detects an obstacle, where it then redirects its path elsewhere. My code works by sending out a 10-microsecond pulse through the ultrasonic sensor, then measuring the time it takes to return. This measurement is used to calculate the distance in centimeters to an obstruction in front of it. The IR sensors work in a similar way, monitoring the sides of the robot for obstacles and moving away accordingly. The base project has been completed; I only need to work on my final milestone now. My modification will feature an app that controls some of the robot's movements.
 
 
 # First Milestone
