@@ -33,7 +33,7 @@ For your final milestone, explain the outcome of your project. Key details to in
 
 **Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
 
-<iframe width="838" height="471" src="https://www.youtube.com/embed/lzNUG7Wf0jk" title="Angela C. Milestone 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lzNUG7Wf0jk" title="Angela C. Milestone 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 My second milestone was completing the coding portion of my project. The robot drives forward autonomously until it detects an obstacle, where it then redirects its path elsewhere. My code works by sending out a 10-microsecond pulse through the ultrasonic sensor, then measuring the time it takes to return. This measurement is used to calculate the distance in centimeters to an obstruction in front of it. The IR sensors work in a similar way, monitoring the sides of the robot for obstacles and moving away accordingly. The base project has been completed; I only need to work on my final milestone now. My modification will feature an app that controls some of the robot's movements.
 
