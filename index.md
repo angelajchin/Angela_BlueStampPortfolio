@@ -47,22 +47,6 @@ My first milestone was finishing the hardware portion of my base project. This w
 # Schematics 
 Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 
 
-# Code
-Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. 
-
-```c++
-void setup() {
-  // put your setup code here, to run once:
-  Serial.begin(9600);
-  Serial.println("Hello World!");
-}
-
-void loop() {
-  // put your main code here, to run repeatedly:
-
-}
-```
-
 # Bill of Materials
 Here's where you'll list the parts in your project. To add more rows, just copy and paste the example rows below.
 Don't forget to place the link of where to buy each component inside the quotation marks in the corresponding row after href =. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize this to your project needs. 
@@ -72,8 +56,167 @@ Don't forget to place the link of where to buy each component inside the quotati
 | 3 in 1 Starter Kit | All components of the robot can be found within the starter kit, including the chassis. | $69.99 | <a href="https://www.sunfounder.com/products/sunfounder-3-in-1-iot-smart-car-learning-ultimate-starter-kit"> Link </a> |
 | Odistar Desktop Vacuum Cleaner | For cleaning the floor | $12.98 | <a href="https://www.amazon.com/ODISTAR-Endurance-Cordless-Rotatable-Keyboard/dp/B07Q128V6W/ref=sr_1_1_sspa?crid=GTU49YHVDQWH&dib=eyJ2IjoiMSJ9.7-jDIbAMj99apdM_o_tLpsiMU6__WeFo0jVnuZp4HXX5tHOHRXb66kw-HGzvDadVS5x0-_yRjqsAvIwupdlePsQBvta8EnoEUn-bV8riLfrQDSmc8oA7QwR0_bv7PFhzW9HCeLLtlY2HeyKwOcJYCkptrZhRWCsIRB6hi3mIM8mELFfRgPnJnAAojT23QOLDN_ojzKNDCWpzrbnlPaHWyCVKXGk6DI1i-PdmSrluJlg.5YwF74G0MfllQsEfLe-Ntj9BZGB_MJ5HbVqeb2vmbzI&dib_tag=se&keywords=odistar%2Bdesk%2Bvacuum&qid=1781204100&sprefix=odistar%2Bdesk%2B%2Caps%2C160&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1"> Link </a> |
 
-# Other Resources/Examples
-One of the best parts about Github is that you can view how other people set up their own work. Here are some past BSE portfolios that are awesome examples. You can view how they set up their portfolio, and you can view their index.md files to understand how they implemented different portfolio components.
-- [Example 1](https://trashytuber.github.io/YimingJiaBlueStamp/)
-- [Example 2](https://sviatil0.github.io/Sviatoslav_BSE/)
-- [Example 3](https://arneshkumar.github.io/arneshbluestamp/)
+# Code
+```c++
+#include <SoftwareSerial.h>
+
+SoftwareSerial ESP8266(12, 11); //(RX, TX)
+
+bool connected = false;
+int connection_attempts = 0;
+bool isCleaning = false;
+
+const int A_1B = 5;
+const int A_1A = 6;
+const int B_1B = 9;
+const int B_1A = 10;
+
+const int echoPin = 4;
+const int trigPin = 3;
+
+const int rightIR = 7; 
+const int leftIR = 8; 
+
+void printESPResponse(int waitTime);
+
+void setup() {
+  Serial.begin(9600); 
+  ESP8266.begin(9600);  
+  delay(1000);
+
+  pinMode(A_1B, OUTPUT); 
+  pinMode(A_1A, OUTPUT);
+  pinMode(B_1B, OUTPUT); 
+  pinMode(B_1A, OUTPUT);
+
+  pinMode(echoPin, INPUT); 
+  pinMode(trigPin, OUTPUT);
+
+  pinMode(leftIR, INPUT); 
+  pinMode(rightIR, INPUT);
+
+  Serial.println("Resetting ESP8266 module...");
+  ESP8266.println("AT+RST");
+  delay(4000);
+  while(ESP8266.available()) ESP8266.read();
+
+  Serial.println("Setting station mode");
+  ESP8266.println("AT+CWMODE=1");
+  printESPResponse(2000);
+
+  Serial.println("Connecting to wifi...");
+  // ESP8266.println("AT+CWJAP=\"<wifi>\",\"<pass>\""); <-- replace w/ wifi & password
+  
+  printESPResponse(8000); 
+
+  Serial.println("\nSetting MUX");
+  ESP8266.println("AT+CIPMUX=1"); 
+  printESPResponse(2000);
+  
+  Serial.println("Starting server on port 80");
+  ESP8266.println("AT+CIPSERVER=1,80"); 
+  printESPResponse(2000);
+  
+  Serial.println("Getting IP address");
+  ESP8266.println("AT+CIFSR"); 
+  printESPResponse(2000);
+
+  Serial.println("\nSetup completed");
+  connected = true;
+}
+
+void loop() {
+  if (ESP8266.available()) {
+    String incoming = "";
+    unsigned long timeout = millis();
+    
+    while (millis() - timeout < 150) { 
+      if (ESP8266.available()) {
+        incoming += (char)ESP8266.read();
+      }
+    }
+
+    if (incoming.indexOf("+IPD,") != -1) {
+      Serial.println("\nReceived Request!");
+      int ipdIndex = incoming.indexOf("+IPD,");
+      char connectionId = incoming.charAt(ipdIndex + 5); 
+      
+      if (incoming.indexOf("GET /on") != -1) {
+        isCleaning = true;
+        Serial.println("--Starting--");
+      }
+      else if (incoming.indexOf("GET /off") != -1) {
+        isCleaning = false;
+        stopMove();
+        Serial.println("--Stopping--");
+      }
+      
+      delay(100); 
+      ESP8266.print("AT+CIPCLOSE=");
+      ESP8266.println(connectionId);
+      printESPResponse(500);
+    }
+  }
+
+  if (isCleaning) {
+    selfDriving(); 
+  } else {
+    stopMove(); 
+  }
+}
+
+void printESPResponse(int waitTime) {
+  unsigned long startTime = millis();
+  while (millis() - startTime < waitTime) {
+    while (ESP8266.available()) {
+      char c = ESP8266.read();
+      Serial.print(c);
+    }
+  }
+}
+
+void selfDriving() {
+  int left = digitalRead(leftIR);  
+  int right = digitalRead(rightIR);
+
+  if (!left && right) {
+    backLeft(120);
+    } else if (left && !right) {
+      backRight(120);
+    } else if (!left && !right) {
+      moveBackward(120);
+    } else {
+      float distance = readSensorData();
+      Serial.println(distance);
+      if (distance > 50) {
+        moveForward(120);
+      } else if (distance < 5 && distance > 2) {
+        moveBackward(120);
+        delay(1000);
+        backLeft(120);
+        delay(500);
+      } else {
+      moveForward(120);
+    }
+  }
+}
+
+float readSensorData() { 
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  float distance = pulseIn(echoPin, HIGH) / 58.00;
+  return distance;  
+}
+
+void moveForward(int speed)  { analogWrite(A_1B, 0); analogWrite(A_1A, speed); analogWrite(B_1B, speed); analogWrite(B_1A, 0); }
+
+void moveBackward(int speed) { analogWrite(A_1B, speed); analogWrite(A_1A, 0); analogWrite(B_1B, 0); analogWrite(B_1A, speed); }
+void backLeft(int speed)     { analogWrite(A_1B, speed); analogWrite(A_1A, 0); analogWrite(B_1B, 0); analogWrite(B_1A, 0); }
+void backRight(int speed)    { analogWrite(A_1B, 0); analogWrite(A_1A, 0); analogWrite(B_1B, 0); analogWrite(B_1A, speed); }
+void stopMove()              { analogWrite(A_1B, 0); analogWrite(A_1A, 0); analogWrite(B_1B, 0); analogWrite(B_1A, 0); }
+
+```
+Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. 
