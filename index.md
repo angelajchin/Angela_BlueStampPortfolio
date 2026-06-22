@@ -1,11 +1,7 @@
 # Floor Cleaning Robot
 Cleaning your floor has never been easier! This floor-cleaning robot works autonomously by avoiding nearby obstacles using ultrasonic and infrared sensors. The brush attached to its underside sweeps up any debris it encounters while moving. 
 
-You should comment out all portions of your portfolio that you have not completed yet, as well as any instructions:
-```HTML 
 <!--- This is an HTML comment in Markdown -->
-<!--- Anything between these symbols will not render on the published site -->
-```
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
@@ -14,8 +10,8 @@ You should comment out all portions of your portfolio that you have not complete
 **Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
 
 ![Headstone Image](logo.svg)
-  
-<!---# Final Milestone
+  <!---
+# Final Milestone
 
 **Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
 
@@ -25,10 +21,12 @@ For your final milestone, explain the outcome of your project. Key details to in
 - What you've accomplished since your previous milestone
 - What your biggest challenges and triumphs were at BSE
 - A summary of key topics you learned about
-- What you hope to learn in the future after everything you've learned at BSE -->
+- What you hope to learn in the future after everything you've learned at BSE
+My final milestone was also my modification; I designed a mobile app that can start and stop the robot. I integrated an ESP8266 module into my project, granting it access to the Wi-Fi. An ESP8266 Wi-Fi module is (). After the ESP8266 connects to a home Wi-Fi router, the Arduino can send text commands via RX and TX pins. One of these commands was (), which meant an external device (in my case my phone) could directly send commands to the Arduino. This allows the user to start or stop the movements of the floor-cleaning robot.
 
+My final milestone and personal modification focused on developing a mobile app to wirelessly control the robot. I integrated an ESP8266 Wi-Fi module into my project, which is a low-cost microchip that allows an Arduino to connect to a local network. Once the ESP8266 established a connection to my home Wi-Fi router,  
 
-
+--->
 # Second Milestone
 
 **Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
@@ -46,6 +44,7 @@ My first milestone was finishing the hardware portion of my base project. This w
 
 # Schematics 
 ![Schematic](schematic.png)
+
 # Bill of Materials
 Here's where you'll list the parts in your project. To add more rows, just copy and paste the example rows below.
 Don't forget to place the link of where to buy each component inside the quotation marks in the corresponding row after href =. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize this to your project needs. 
@@ -218,4 +217,5 @@ void backRight(int speed)    { analogWrite(A_1B, 0); analogWrite(A_1A, 0); analo
 void stopMove()              { analogWrite(A_1B, 0); analogWrite(A_1A, 0); analogWrite(B_1B, 0); analogWrite(B_1A, 0); }
 
 ```
-Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. 
+
+# Other Resources
