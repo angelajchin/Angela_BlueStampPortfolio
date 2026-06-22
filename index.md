@@ -45,8 +45,7 @@ My second milestone was completing the coding portion of my project. The robot d
 My first milestone was finishing the hardware portion of my base project. This was relatively simple, as the floor cleaning robot is essentially a standard 3-in-1 starter kit robot. The chassis of this bot is made from an acrylic board, two TT wheels, and one universal wheel. Attached to it is an Arduino Uno R3 board acting as the "brain" of the bot, controlling the TT motors. The ultrasonic sensor emits sound pulses to measure the distance to an object in front of it, while the IR sensors sense any obstructions to the right and left of the robot. My only issue was that the wheels occasionally dragged when turning, but I chalked it up to the them getting caught on the acrylic board.
 
 # Schematics 
-Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 
-
+![Schematic](schematic.png)
 # Bill of Materials
 Here's where you'll list the parts in your project. To add more rows, just copy and paste the example rows below.
 Don't forget to place the link of where to buy each component inside the quotation marks in the corresponding row after href =. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize this to your project needs. 
