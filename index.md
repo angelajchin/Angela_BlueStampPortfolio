@@ -22,9 +22,10 @@ For your final milestone, explain the outcome of your project. Key details to in
 - What your biggest challenges and triumphs were at BSE
 - A summary of key topics you learned about
 - What you hope to learn in the future after everything you've learned at BSE
-My final milestone was also my modification; I designed a mobile app that can start and stop the robot. I integrated an ESP8266 module into my project, granting it access to the Wi-Fi. An ESP8266 Wi-Fi module is (). After the ESP8266 connects to a home Wi-Fi router, the Arduino can send text commands via RX and TX pins. One of these commands was (), which meant an external device (in my case my phone) could directly send commands to the Arduino. This allows the user to start or stop the movements of the floor-cleaning robot.
 
-My final milestone and personal modification focused on developing a mobile app to wirelessly control the robot. I integrated an ESP8266 Wi-Fi module into my project, which is a low-cost microchip that allows an Arduino to connect to a local network. Once the ESP8266 established a connection to my home Wi-Fi router,  
+My final milestone and personal modification focused on developing a mobile app to wirelessly control the robot. I added an ESP8266 Wi-Fi module into my project, which is a low-cost microchip that allows an Arduino to connect to a local network. Once the ESP8266 establishes a connection to my home Wi-Fi router, the Arduino can communicate with it using RX and TX pins. I started a server on port 80 in order to host a local web page, which will receive HTTP requests from an external device (in this case my phone). My code is able to parse these requests and turn the robot on or off in real time.
+
+
 
 --->
 # Second Milestone
@@ -209,13 +210,40 @@ float readSensorData() {
   return distance;  
 }
 
-void moveForward(int speed)  { analogWrite(A_1B, 0); analogWrite(A_1A, speed); analogWrite(B_1B, speed); analogWrite(B_1A, 0); }
+void moveForward(int speed) { 
+  analogWrite(A_1B, 0); 
+  analogWrite(A_1A, speed); 
+  analogWrite(B_1B, speed); 
+  analogWrite(B_1A, 0); 
+  }
 
-void moveBackward(int speed) { analogWrite(A_1B, speed); analogWrite(A_1A, 0); analogWrite(B_1B, 0); analogWrite(B_1A, speed); }
-void backLeft(int speed)     { analogWrite(A_1B, speed); analogWrite(A_1A, 0); analogWrite(B_1B, 0); analogWrite(B_1A, 0); }
-void backRight(int speed)    { analogWrite(A_1B, 0); analogWrite(A_1A, 0); analogWrite(B_1B, 0); analogWrite(B_1A, speed); }
-void stopMove()              { analogWrite(A_1B, 0); analogWrite(A_1A, 0); analogWrite(B_1B, 0); analogWrite(B_1A, 0); }
+void moveBackward(int speed) { 
+  analogWrite(A_1B, speed); 
+  analogWrite(A_1A, 0); 
+  analogWrite(B_1B, 0); 
+  analogWrite(B_1A, speed); 
+  }
 
+void backLeft(int speed) { 
+  analogWrite(A_1B, speed); 
+  analogWrite(A_1A, 0); 
+  analogWrite(B_1B, 0); 
+  analogWrite(B_1A, 0); 
+  }
+
+void backRight(int speed) { 
+  analogWrite(A_1B, 0); 
+  analogWrite(A_1A, 0); 
+  analogWrite(B_1B, 0); 
+  analogWrite(B_1A, speed); 
+  }
+
+void stopMove() { 
+  analogWrite(A_1B, 0); 
+  analogWrite(A_1A, 0); 
+  analogWrite(B_1B, 0); 
+  analogWrite(B_1A, 0); 
+}
 ```
 
 # Other Resources
