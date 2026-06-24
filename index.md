@@ -10,7 +10,7 @@ Cleaning your floor has never been easier! This floor-cleaning robot works auton
 **Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
 
 ![Headstone Image](logo.svg)
-  <!---
+
 # Final Milestone
 
 **Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
@@ -21,7 +21,7 @@ My final milestone and personal modification focused on developing a mobile app 
 
 In summary, while building this project, I gained experience with IoT communication and how to configure an ESP8266 module using serial commands. My biggest challenge and subsequently my biggest accomplishment was definitely getting the ESP module to work and connect to the Wi-Fi because I didn’t even know that it was possible prior to this program. In the future, I plan on learning about app design and hardware communication in greater detail.
 
---->
+
 # Second Milestone
 
 **Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
