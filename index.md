@@ -1,7 +1,6 @@
 # Floor Cleaning Robot
 Cleaning your floor has never been easier! This floor-cleaning robot works autonomously by avoiding nearby obstacles using ultrasonic and infrared sensors. The brush attached to its underside sweeps up any debris it encounters while moving. 
 
-<!--- This is an HTML comment in Markdown -->
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
@@ -13,8 +12,6 @@ Cleaning your floor has never been easier! This floor-cleaning robot works auton
 
 # Final Milestone
 
-**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
-
 <iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 My final milestone and personal modification focused on developing a mobile app to wirelessly control the robot. I added an ESP8266 Wi-Fi module into my project, which is a low-cost microchip that allows an Arduino to connect to a local network. Once the ESP8266 establishes a connection to my home Wi-Fi router, the Arduino can communicate with it using RX and TX pins. I started a server on port 80 in order to host a local web page, which will receive HTTP requests from an external device (in this case my phone). My code is able to parse these requests and turn the robot on or off in real time. If I had more time to modify my project, I would add a manual driving mode where the user can control the robot with a joystick.
@@ -23,8 +20,6 @@ In summary, while building this project, I gained experience with IoT communicat
 
 
 # Second Milestone
-
-**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/lzNUG7Wf0jk" title="Angela C. Milestone 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -239,3 +234,5 @@ void stopMove() {
 ```
 
 # Other Resources
+[SunFounder Kit Assembly Tutorial](https://docs.sunfounder.com/projects/3in1-kit-v2/en/latest/car_project/car_project.html)
+[Connect ESP8266 to Arduino Uno](https://youtu.be/igPqNlfLcs0)
