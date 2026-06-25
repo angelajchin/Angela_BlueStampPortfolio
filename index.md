@@ -234,5 +234,6 @@ void stopMove() {
 ```
 
 # Other Resources
-[SunFounder Kit Assembly Tutorial](https://docs.sunfounder.com/projects/3in1-kit-v2/en/latest/car_project/car_project.html)
+[SunFounder Kit Assembly Tutorial](https://docs.sunfounder.com/projects/3in1-kit-v2/en/latest/car_project/car_project.html)  
+
 [Connect ESP8266 to Arduino Uno](https://youtu.be/igPqNlfLcs0)
