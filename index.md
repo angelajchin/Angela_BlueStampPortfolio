@@ -12,7 +12,7 @@ Cleaning your floor has never been easier! This floor-cleaning robot works auton
 
 # Final Milestone
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bEiWtbecu78" title="Angela C. Milestone 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 My final milestone and personal modification focused on developing a mobile app to wirelessly control the robot. I added an ESP8266 Wi-Fi module into my project, which is a low-cost microchip that allows an Arduino to connect to a local network. Once the ESP8266 establishes a connection to my home Wi-Fi router, the Arduino can communicate with it using RX and TX pins. I started a server on port 80 in order to host a local web page, which will receive HTTP requests from an external device (in this case my phone). My code is able to parse these requests and turn the robot on or off in real time. If I had more time to modify my project, I would add a manual driving mode where the user can control the robot with a joystick.
 
