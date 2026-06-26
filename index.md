@@ -6,9 +6,7 @@ Cleaning your floor has never been easier! This floor-cleaning robot works auton
 |:--:|:--:|:--:|:--:|
 | Angela C. | Diamond Bar High School | Biosystems Engineering | Incoming Junior
 
-**Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
-
-![Headstone Image](logo.svg)
+<img src="thumbnail.jpg" alt="Headstone Image" width="400" height="300">
 
 # Final Milestone
 
